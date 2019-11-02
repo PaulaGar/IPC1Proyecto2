@@ -13,7 +13,11 @@ public class Oferta {
     String descripcion;
     Double descuento;
     boolean prioridad;
+    int id;
+   
+    OfertaLista OL;
     
+    public Oferta (){}
     
     
 }

@@ -29,7 +29,7 @@ public class OferEliminar extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,7 +39,12 @@ public class OferEliminar extends javax.swing.JFrame {
 
         jLabel3.setText("Atención! Se eliminará unicamente la primera oferta ingresada.");
 
-        jButton1.setText("Eliminar oferta");
+        eliminar.setText("Eliminar oferta");
+        eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarMouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Regresar");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,7 +66,7 @@ public class OferEliminar extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jButton1)
+                .addComponent(eliminar)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -75,7 +80,7 @@ public class OferEliminar extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(eliminar)
                     .addComponent(jButton2)))
         );
 
@@ -87,6 +92,12 @@ public class OferEliminar extends javax.swing.JFrame {
     ofer.setVisible(true);
     dispose();
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarMouseClicked
+        Login_V.listao.eliminaroferta();
+
+// BOTON ELIMINAR
+    }//GEN-LAST:event_eliminarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -124,7 +135,7 @@ public class OferEliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton eliminar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

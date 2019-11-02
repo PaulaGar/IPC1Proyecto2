@@ -5,17 +5,42 @@
  */
 package ipc1._proyecto2_201700823;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Paula
  */
 public class OferMostrar extends javax.swing.JFrame {
-
+   DefaultTableModel rowan; 
     /**
      * Creates new form OferMostrar
      */
     public OferMostrar() {
         initComponents();
+        rowan = new DefaultTableModel();
+        
+        
+        //agrego columnas
+        rowan.addColumn("ID");
+        rowan.addColumn("Producto");
+        rowan.addColumn("Porcentaje de oferta");
+        rowan.addColumn("Descripcion");
+        //rowan.addColumn("Prioridad");
+        
+        //casi se olvida agregar el modelo 
+        this.ofermostrar.setModel(rowan);
+        
+        //Nodo auxiliares
+        NodoO auxi=Login_V.listao.inicio;
+        
+        //ciclos para buscar 
+        for(int i=0; i<Login_V.listao.tamaño; i++){
+            String nameprod = Login_V.listap.buscar(auxi.oferta.id).nombre; //fumada de la vida
+        rowan.addRow(new Object[]{auxi.oferta.id,nameprod,auxi.oferta.descuento,auxi.oferta.descripcion }); //AGREGAR EL DE PRIORIDAD
+        
+        auxi = auxi.siguiente;
+        }
     }
 
     /**
@@ -29,7 +54,7 @@ public class OferMostrar extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ofermostrar = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,18 +62,15 @@ public class OferMostrar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Ofertas Disponibles");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ofermostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(ofermostrar);
 
         jButton1.setText("Regresar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,12 +85,16 @@ public class OferMostrar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(201, 201, 201)))
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,8 +102,8 @@ public class OferMostrar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -130,6 +156,6 @@ public class OferMostrar extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable ofermostrar;
     // End of variables declaration//GEN-END:variables
 }

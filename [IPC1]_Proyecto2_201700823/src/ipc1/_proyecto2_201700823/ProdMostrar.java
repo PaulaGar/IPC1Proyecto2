@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProdMostrar extends javax.swing.JFrame {
 
-    DefaultTableModel modelomostrar;
+    DefaultTableModel modelomostrar; //creo el modelo
     
     
     /**
@@ -26,17 +26,19 @@ public class ProdMostrar extends javax.swing.JFrame {
     public ProdMostrar() {
         initComponents();
         
-        modelomostrar = new DefaultTableModel();
+        modelomostrar = new DefaultTableModel(); 
        
-        
+        //agrego columnas
         modelomostrar.addColumn("ID");
         modelomostrar.addColumn("Nombre");
         
+        //le aplico el modelo a la tabla
          this.tablaprod.setModel(modelomostrar);
          
+         //nodo temporal para recorrer la lista
         NodoP temporal = Login_V.listap.inicio; 
         
-        
+        //ciclo que recorre la lista y va agregando los datos encontrados
         for(int i=0; i< Login_V.listap.size();i++){
         modelomostrar.addRow(new Object[]{temporal.producto.id,temporal.producto.nombre});
         temporal=temporal.siguiente;

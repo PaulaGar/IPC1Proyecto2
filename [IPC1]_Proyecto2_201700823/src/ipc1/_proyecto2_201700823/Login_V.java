@@ -188,7 +188,7 @@ JOptionPane.showMessageDialog(this, "USUARIO O CONTRASEÑA INCORRECTAS");
 //AQUI ESTAN MIS LISTAS
     public static ProductoLista listap = new ProductoLista();
     public static UsuariosLista listau = new UsuariosLista();
-    
+    public static OfertaLista listao = new OfertaLista();
     
     
     /**

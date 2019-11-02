@@ -12,6 +12,7 @@ package ipc1._proyecto2_201700823;
 public class OfertaLista {
     //objetos clase nodo oferta
     NodoO inicio;
+    int tamaño=0;
     
     //constructor
     public OfertaLista (){
@@ -22,6 +23,7 @@ public class OfertaLista {
     public void agregar (Oferta o){
         NodoO temporal;
         temporal = new NodoO(o);
+        tamaño++;
    if (inicio==null){
     inicio=temporal;
     inicio.siguiente= null;
@@ -37,6 +39,11 @@ public class OfertaLista {
    
     }
     
+    public void eliminaroferta(){
+        tamaño --;
+        inicio = inicio.siguiente;
+        
+    }
     
     
     
