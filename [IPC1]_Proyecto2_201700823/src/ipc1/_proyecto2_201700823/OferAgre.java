@@ -6,6 +6,7 @@
 package ipc1._proyecto2_201700823;
 
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,15 +48,16 @@ public class OferAgre extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        gruporadio = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Tprod = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        alta = new javax.swing.JRadioButton();
+        baja = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         descofer = new javax.swing.JTextField();
@@ -99,9 +101,11 @@ public class OferAgre extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setText("Escoja el producto al que quiere aplicarle la oferta");
 
-        jRadioButton1.setText("Alta");
+        gruporadio.add(alta);
+        alta.setText("Alta");
 
-        jRadioButton2.setText("Baja");
+        gruporadio.add(baja);
+        baja.setText("Baja");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Prioridad:");
@@ -130,8 +134,8 @@ public class OferAgre extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton1))
+                            .addComponent(baja)
+                            .addComponent(alta))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -168,9 +172,9 @@ public class OferAgre extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1)
+                        .addComponent(alta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2))
+                        .addComponent(baja))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -218,8 +222,23 @@ public class OferAgre extends javax.swing.JFrame {
         oak.descripcion = descofer.getText();
         oak.descuento =Double.parseDouble(porcentaje.getText())/100;
         
+        //Inicialmente pongo los radiobuttons como falsos o "no seleccionados"
+        alta.setSelected(false);
+        baja.setSelected(false);
+        
+       //porcion donde se revisa cual fue seleccionado y se le da el valor 
+        if (alta.isSelected()){
+        oak.prioridad = true;
+        
+        }
+        else if (baja.isSelected()){
+        oak.prioridad = false;
+        }
+        
+        
+       
         Login_V.listao.agregar(oak);
-
+        JOptionPane.showMessageDialog(this, "OFERTA AGREGADA");
 
 // BOTON APLICAR OFERTA
     }//GEN-LAST:event_jButton1MouseClicked
@@ -261,8 +280,11 @@ public class OferAgre extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tprod;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton alta;
+    private javax.swing.JRadioButton baja;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField descofer;
+    private javax.swing.ButtonGroup gruporadio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -270,8 +292,6 @@ public class OferAgre extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField porcentaje;
     // End of variables declaration//GEN-END:variables

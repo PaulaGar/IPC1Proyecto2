@@ -26,7 +26,7 @@ public class OferMostrar extends javax.swing.JFrame {
         rowan.addColumn("Producto");
         rowan.addColumn("Porcentaje de oferta");
         rowan.addColumn("Descripcion");
-        //rowan.addColumn("Prioridad");
+        rowan.addColumn("Prioridad");
         
         //casi se olvida agregar el modelo 
         this.ofermostrar.setModel(rowan);
@@ -37,7 +37,17 @@ public class OferMostrar extends javax.swing.JFrame {
         //ciclos para buscar 
         for(int i=0; i<Login_V.listao.tamaño; i++){
             String nameprod = Login_V.listap.buscar(auxi.oferta.id).nombre; //fumada de la vida
-        rowan.addRow(new Object[]{auxi.oferta.id,nameprod,auxi.oferta.descuento,auxi.oferta.descripcion }); //AGREGAR EL DE PRIORIDAD
+            
+
+//para que salga "alta/baja" en lugar de "true/false"
+            String prio= String.valueOf(auxi.oferta.prioridad);
+            if(auxi.oferta.prioridad==true){
+            prio= "Alta";
+            }
+            else if (auxi.oferta.prioridad==false){
+            prio="Baja";
+            }
+        rowan.addRow(new Object[]{auxi.oferta.id,nameprod,auxi.oferta.descuento,auxi.oferta.descripcion, prio }); //AGREGAR EL DE PRIORIDAD
         
         auxi = auxi.siguiente;
         }
