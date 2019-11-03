@@ -38,18 +38,18 @@ public class Cliente extends javax.swing.JFrame {
      NodoO ofer = Login_V.listao.inicio;
         double prenorm;
         double preofer;
-        
+        String nomnom;
         
       for(int i=0; i< Login_V.listap.size();i++){
+          
         ofer = Login_V.listao.inicio;
-          System.out.println("este es el id: " +ofer.oferta.id);
-          while (ofer!=null){ 
-               System.out.println("ESTE ES EL ID: " +ofer.oferta.id);
+        while (ofer!=null){ 
+            nomnom= "P: " + produ.producto.nombre;
         prenorm=produ.producto.precio;
         preofer= Login_V.listao.buscarid(produ.producto.id, prenorm);
    
           if(ofer.oferta.prioridad==true && (ofer.oferta.id==produ.producto.id)){
-        chu.addRow(new Object[]{produ.producto.dirimagen,produ.producto.nombre,preofer,prenorm});
+        chu.addRow(new Object[]{produ.producto.dirimagen,nomnom,preofer,prenorm});
   
           } 
                

@@ -38,7 +38,6 @@ public class ClienteCatalogo extends javax.swing.JFrame {
               
               double pre= Login_V.listao.buscarid(josef.producto.id, josef.producto.precio);
    
-              
         jojo.addRow(new Object[]{josef.producto.dirimagen,josef.producto.nombre, josef.producto.desc, pre});
         josef=josef.siguiente;
            }
