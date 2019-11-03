@@ -48,7 +48,7 @@ public class UsuariosLista {
     if (isEmpty()) return vacio;
     NodoU aux = inicio;
     do{
-    if(aux.usuario.nickname==nickname){
+    if(aux.usuario.nickname.equals(nickname)){
     return aux.usuario;
     }
     aux=aux.siguiente;
@@ -72,4 +72,46 @@ public class UsuariosLista {
     
     }
     
+      public String buscarcontra(String contraseña){
+        Usuarios vacio = new Usuarios(); 
+        Usuarios perdido = new Usuarios();
+      vacio=null;
+      perdido=null;
+    if (isEmpty()) return "nada";
+    NodoU aux = inicio;
+    do{
+        if(aux==null){
+       return "nada";}
+        else  if(aux.usuario.contraseña.equals(contraseña)){
+    return aux.usuario.contraseña;
+    }
+    aux=aux.siguiente;
+    }while(aux!=inicio);
+    return "nada";
+   
+    } 
+      
+     public String buscarnick(String nickname){
+        Usuarios vacio = new Usuarios(); 
+        Usuarios perdido = new Usuarios();
+      vacio=null;
+      perdido=null;
+    if (isEmpty()) return "nada";
+    NodoU aux = inicio;
+    do{
+       if(aux==null){
+           System.out.println("estamos en el null");
+       return "nada";}
+       else if(aux.usuario.nickname.equals(nickname)){
+        System.out.println(aux.usuario.nickname);
+    return aux.usuario.nickname;
+    
+    }
+    aux=aux.siguiente;
+       
+    }while(aux!=inicio);
+         System.out.println("salimos del while");
+    return "nada";
+    
+    }  
 }

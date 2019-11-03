@@ -163,7 +163,10 @@ public class Login_V extends javax.swing.JFrame {
     private void ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMouseClicked
 String usuario = "ADMIN";
 String contraseña = "ADMIN";
+String nombre = listau.buscarnick(txtusuario.getText());
+String clave  = listau.buscarcontra(Password.getText());
 
+        System.out.println(nombre + clave);
 String Pass = new String(Password.getPassword());
 
 if (txtusuario.getText().equals(usuario)&& Pass.equals(contraseña)){
@@ -172,13 +175,19 @@ if (txtusuario.getText().equals(usuario)&& Pass.equals(contraseña)){
     admin.setVisible(true);
     this.setVisible(false);
 }
+else if (txtusuario.getText().equals(nombre)&& Password.getText().equals(clave)){
+    pepin= txtusuario.getText();
+    Cliente cliente = new Cliente();
+    cliente.setVisible(true);
+    this.setVisible(false);
+    }    
 else {
 JOptionPane.showMessageDialog(this, "USUARIO O CONTRASEÑA INCORRECTAS");
 }
         
+   
         
-        
-        
+    
         
     }//GEN-LAST:event_ingresarMouseClicked
 
@@ -189,7 +198,7 @@ JOptionPane.showMessageDialog(this, "USUARIO O CONTRASEÑA INCORRECTAS");
     public static ProductoLista listap = new ProductoLista();
     public static UsuariosLista listau = new UsuariosLista();
     public static OfertaLista listao = new OfertaLista();
-    
+    public static String pepin;
     
     /**
      * @param args the command line arguments

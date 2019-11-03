@@ -4,18 +4,23 @@
  * and open the template in the editor.
  */
 package ipc1._proyecto2_201700823;
+    
+import static ipc1._proyecto2_201700823.Login_V.pepin;
 
 /**
  *
  * @author Paula
  */
 public class Cliente extends javax.swing.JFrame {
-
+    Usuarios Dio = new Usuarios();
     /**
      * Creates new form Cliente
      */
     public Cliente() {
         initComponents();
+       Dio= Login_V.listau.buscar(pepin);
+
+     nomusu.setText(Dio.nombre);
     }
 
     /**
@@ -28,7 +33,7 @@ public class Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nomusu = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -40,10 +45,15 @@ public class Cliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("BIENVENIDO ");
 
-        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        jLabel2.setText("NOMBRE");
+        nomusu.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        nomusu.setText(":");
 
         jButton1.setText("Configuracion");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Cerrar Sesion");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,6 +67,11 @@ public class Cliente extends javax.swing.JFrame {
         jButton4.setText("Pagar");
 
         jButton5.setText("Ver Todos los productos");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +93,7 @@ public class Cliente extends javax.swing.JFrame {
                         .addGap(0, 219, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nomusu, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(195, 195, 195))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(271, 271, 271)
@@ -99,7 +114,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(nomusu))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addContainerGap())
@@ -112,9 +127,27 @@ public class Cliente extends javax.swing.JFrame {
         Login_V logo = new Login_V();
         logo.setVisible(true);
         dispose();
+        
+        //HACER LISTA Y METODO VACIAR DONDE ELIMINE TODO EN LA LISTA Y PONER AQUI
 
 // BOTON CERRAR SESION
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+       ClienteCatalogo cata = new ClienteCatalogo();
+       cata.setVisible(true);
+       dispose();
+        
+// BOTON CATALOGO
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        ClienteModificar mod = new ClienteModificar();
+        mod.setVisible(true);
+        dispose();       
+
+//BOTON conf
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -158,6 +191,6 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel nomusu;
     // End of variables declaration//GEN-END:variables
 }

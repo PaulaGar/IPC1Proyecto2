@@ -170,8 +170,8 @@ public class UsuarioAgregar extends javax.swing.JFrame {
         nuevo.tarjeta = Integer.parseInt(tarjetatxt.getText());
         
         listau.insertar(nuevo);
- JOptionPane.showMessageDialog(this, "Usuario agregado");
- 
+ JOptionPane.showMessageDialog(this, "USUARIO AGREGADO ");
+        
 
 // BOTON AGREGAR
     }//GEN-LAST:event_jButton1MouseClicked
