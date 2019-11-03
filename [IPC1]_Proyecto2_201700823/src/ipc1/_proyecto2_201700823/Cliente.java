@@ -6,13 +6,15 @@
 package ipc1._proyecto2_201700823;
     
 import static ipc1._proyecto2_201700823.Login_V.pepin;
-
+import javax.swing.table.DefaultTableModel;
+    
 /**
  *
  * @author Paula
  */
 public class Cliente extends javax.swing.JFrame {
     Usuarios Dio = new Usuarios();
+    DefaultTableModel chu;
     /**
      * Creates new form Cliente
      */
@@ -21,6 +23,56 @@ public class Cliente extends javax.swing.JFrame {
        Dio= Login_V.listau.buscar(pepin);
 
      nomusu.setText(Dio.nombre);
+     
+     
+     chu= new DefaultTableModel();
+     
+     chu.addColumn("");//imagen
+     chu.addColumn("Nombre");
+     chu.addColumn("Precio oferta");
+     chu.addColumn("Precio normal");
+     
+     this.oferT.setModel(chu);
+     
+     NodoP produ = Login_V.listap.inicio;
+     NodoO ofer = Login_V.listao.inicio;
+        double prenorm;
+        double preofer;
+        
+        
+      for(int i=0; i< Login_V.listap.size();i++){
+        ofer = Login_V.listao.inicio;
+          System.out.println("este es el id: " +ofer.oferta.id);
+          while (ofer!=null){ 
+               System.out.println("ESTE ES EL ID: " +ofer.oferta.id);
+        prenorm=produ.producto.precio;
+        preofer= Login_V.listao.buscarid(produ.producto.id, prenorm);
+   
+          if(ofer.oferta.prioridad==true && (ofer.oferta.id==produ.producto.id)){
+        chu.addRow(new Object[]{produ.producto.dirimagen,produ.producto.nombre,preofer,prenorm});
+  
+          } 
+               
+                ofer = ofer.siguiente;
+          }
+           produ=produ.siguiente;
+          }
+      
+      
+      for(int i=0; i< Login_V.listap.size();i++){
+          ofer = Login_V.listao.inicio;
+          while (ofer!=null){ 
+          prenorm=produ.producto.precio;
+        preofer= Login_V.listao.buscarid(produ.producto.id, prenorm);
+          if(ofer.oferta.prioridad==false && ofer.oferta.id==produ.producto.id){
+        chu.addRow(new Object[]{produ.producto.dirimagen,produ.producto.nombre,preofer,prenorm});
+    
+          } 
+              
+              ofer = ofer.siguiente;
+          }
+          produ=produ.siguiente;
+          }
     }
 
     /**
@@ -39,13 +91,15 @@ public class Cliente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        oferT = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("BIENVENIDO ");
 
-        nomusu.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        nomusu.setFont(new java.awt.Font("DialogInput", 1, 24)); // NOI18N
         nomusu.setText(":");
 
         jButton1.setText("Configuracion");
@@ -73,6 +127,16 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
+        oferT.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(oferT);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,22 +147,25 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(90, 90, 90)
+                                .addComponent(jButton5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3)
                             .addComponent(jButton4))
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 219, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nomusu, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(195, 195, 195))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addComponent(jButton5)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,14 +177,15 @@ public class Cliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nomusu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,6 +259,8 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nomusu;
+    private javax.swing.JTable oferT;
     // End of variables declaration//GEN-END:variables
 }

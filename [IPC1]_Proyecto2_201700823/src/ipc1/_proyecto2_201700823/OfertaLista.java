@@ -45,6 +45,22 @@ public class OfertaLista {
         
     }
     
+    public double buscarid(int idp, double pp){
+    NodoO buscar = inicio;
+    double np; //nuevo precio
+    for(int m=0; m<tamaño; m++){
+    if (idp==buscar.oferta.id){
+    np=pp-(pp*buscar.oferta.descuento);
+    
+    return np;  
+    
+    }//fin if
+    buscar=buscar.siguiente;
+    }//fin for
+    return pp;
+    
+    }//fin met
+    
     
     
     
